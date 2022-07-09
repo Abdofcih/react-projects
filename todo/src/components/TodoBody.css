@@ -1,0 +1,72 @@
+.todo-body {
+  background-color: var(--bg-gray);
+  height: auto;
+  transition: all 0.3s;
+}
+/* Start  todo container css */
+.todo-body-container {
+  width: 90%;
+  margin: -200px auto;
+}
+@media only screen and (min-width: 768px) {
+  .todo-body-container {
+    max-width: 700px;
+  }
+}
+/* End  todo container css */
+/* Start  todo title css */
+.todo-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  color: var(--white);
+  align-items: center;
+  margin-bottom: 40px;
+}
+.todo-title-text {
+  text-transform: uppercase;
+  font-size: 50px;
+  letter-spacing: 15px;
+}
+.todo-mode {
+  cursor: pointer;
+}
+/* End  todo title css */
+/* Start todo input wrapper css */
+.todo-input-wrapper {
+  margin-bottom: 20px;
+}
+.todo-input {
+  flex-grow: 1;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  caret-color: var(--active);
+  color: var(--todo-text-color);
+}
+.todo-input:focus {
+  outline: none;
+}
+/* End todo input wrapper css */
+
+/* Start todo items  wrapper css */
+.todo-items {
+  overflow: hidden;
+}
+.todo-text {
+  color: var(--todo-text-color);
+  font-size: 24px;
+  flex-grow: 1;
+}
+.todo-item.checked .todo-text {
+  text-decoration: line-through;
+  color: var(--todo-text-color-tow);
+}
+.todo-item-cross {
+  display: none;
+  cursor: pointer;
+}
+.todo-item:hover .todo-item-cross {
+  display: inline;
+}
+/* End todo items  wrapper css */

@@ -1,0 +1,26 @@
+.TodoBodyFooter {
+  display: flex;
+  justify-content: space-between;
+  color: var(--gray-one);
+}
+.left-todos {
+}
+.filter-btns {
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+}
+.filter-btns li {
+  cursor: pointer;
+  padding: 3px 5px;
+}
+.filter-btns li:hover {
+  color: var(--secondary);
+}
+.filter-btns li.active {
+  color: var(--active);
+}
+.clear-btn {
+  font-weight: 600;
+  cursor: pointer;
+}

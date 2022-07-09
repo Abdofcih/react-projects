@@ -1,0 +1,17 @@
+.check-circle {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid var(--gray);
+  text-align: center;
+}
+.check-circle:hover {
+  border-color: var(--active);
+}
+.check-circle.checked {
+  border: none;
+  background-image: linear-gradient(to right bottom, #4822d3d1, #c52db6ab);
+}

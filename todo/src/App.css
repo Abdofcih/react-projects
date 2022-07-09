@@ -1,0 +1,23 @@
+/* this global css for todo item used in input wrapper and todo item container */
+.border-radius-small {
+  border-radius: 5px;
+}
+.border-radius-medium {
+  border-radius: 5px;
+}
+.box-shadow {
+  box-shadow: 3px 5px 5px var(--todo-shadow);
+}
+.underline:not(:last-child) {
+  border-bottom: 1px solid var(--gray-four);
+}
+.todo-item {
+  padding: 15px;
+  height: 60px;
+  width: 100%;
+  background-color: var(--todo-color);
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
