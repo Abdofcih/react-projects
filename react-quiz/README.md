@@ -1,15 +1,9 @@
-#### React Router Fix
+## 1- React quiz app
 
-(Fix)[https://dev.to/dance2die/page-not-found-on-netlify-with-react-router-58mc]
+[Demo](https://react-english-quiz.netlify.app/).
 
-#### CRA Fix
+### Preview
 
-```
+![English quiz preview](https://i.imgur.com/erUfLst.png)
 
-"build": "CI= react-scripts build",
-
-```
-
-```sh
-npm install react-router-dom@6
-```
+![English quiz preview](https://i.imgur.com/vNFmDdE.png)
