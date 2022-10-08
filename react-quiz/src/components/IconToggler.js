@@ -1,9 +1,9 @@
 import React from "react";
 import { useGlobalContext } from "../context";
 
-import moon from "./moon.svg";
-import sun from "./sun.svg";
-export const IconToggler = () => {
+import moon from "../assets/moon.svg";
+import sun from "../assets/sun.svg";
+const IconToggler = () => {
   const { mode, toggleMode } = useGlobalContext();
   return (
     <span onClick={toggleMode}>
@@ -15,3 +15,4 @@ export const IconToggler = () => {
     </span>
   );
 };
+export default IconToggler;

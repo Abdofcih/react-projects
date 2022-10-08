@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { quizData } from "./quiz.data";
+//import { quizData } from "./quiz.data";
 
 const AppContext = React.createContext();
 
@@ -8,6 +8,7 @@ const AppProvider = ({ children }) => {
   const [waiting, setWaiting] = useState(true); // waiting user to enter data
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
+  const [quizData, setQuizData] = useState([]);
   const [index, setIndex] = useState(0); // index of question
   const [correct, setCorrect] = useState(0); // number of correct answers
   const [error, setError] = useState(false); // if something went wrong this is the error msg
@@ -18,33 +19,21 @@ const AppProvider = ({ children }) => {
     name: "",
     email: ""
   });
+
   const [isModelOpen, setIsModelOpen] = useState();
+
   const getStoredTheme = () => {
     let theme = "light";
     if (localStorage.getItem("theme")) theme = localStorage.getItem("theme");
     return theme;
   };
   useEffect(() => {
-    setMode(getStoredTheme());
-    setQuestions(quizData);
-  });
-  useEffect(() => {
     document.documentElement.className = mode;
   }, [mode]);
-  const fetchQuestions = async url => {
-    setLoading(true); // start getting questions data
-    setWaiting(false); // I got user data
-    if (quizData) {
-      setQuestions(quizData);
-      setLoading(false);
-      setWaiting(false);
-      setError(false);
-    } else {
-      setWaiting(true);
-      setError(true);
-    }
-  };
 
+  useEffect(() => {
+    setMode(getStoredTheme());
+  });
   const toggleMode = () => {
     setMode(old => {
       let tempTheme = "";
@@ -55,6 +44,20 @@ const AppProvider = ({ children }) => {
       return tempTheme;
     });
   };
+  const getQuizData = async quizId => {
+    setLoading(true); // start getting questions data
+    try {
+      const { data } = await axios.get("http://localhost:3000/data.json");
+      setQuestions(data.questions);
+      setQuizData(data.quiz);
+      console.log(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   const nextQuestion = () => {
     setIndex(oldValue => {
       let newValue = oldValue + 1;
@@ -69,7 +72,7 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    //we use useEffect to run this code after chnage
+    //we use useEffect to run this code after change
     if (emailToSend && isLastQuestion) sendResult();
   }, [emailToSend, isLastQuestion]);
 
@@ -113,7 +116,7 @@ const AppProvider = ({ children }) => {
   const openModel = () => {
     setIsModelOpen(true);
   };
-  const closeModel = () => {
+  const closeModel = redirectCallback => {
     setWaiting(true);
     setCorrect(0);
     setIndex(0);
@@ -125,6 +128,7 @@ const AppProvider = ({ children }) => {
       email: ""
     });
     setIsModelOpen(false);
+    redirectCallback();
   };
 
   const handleInputChange = e => {
@@ -136,12 +140,14 @@ const AppProvider = ({ children }) => {
       return { ...oldValue, [inputName]: inputValue };
     });
   };
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e, redirectCallback) => {
     // after filling quiz data get quistions
     e.preventDefault();
     const { name, email } = userInfo;
-    if (name || email) fetchQuestions();
-    setError(true);
+    if (!name || !email) {
+      return setError(true);
+    }
+    redirectCallback();
   };
   return (
     <AppContext.Provider
@@ -149,6 +155,7 @@ const AppProvider = ({ children }) => {
         waiting,
         loading,
         questions,
+        quizData,
         index,
         correct,
         error,
@@ -160,6 +167,7 @@ const AppProvider = ({ children }) => {
         handleInputChange,
         handleFormSubmit,
         mode,
+        getQuizData,
         toggleMode
       }}
     >

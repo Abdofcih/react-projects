@@ -1,14 +1,13 @@
 import React from "react";
-import { useGlobalContext } from "./context";
-
+import { useGlobalContext } from "../context";
+import { useHistory } from "react-router-dom";
 const Modal = () => {
-  const {
-    questions,
-    correct,
-    isModelOpen,
-    closeModel,
-    userInfo
-  } = useGlobalContext();
+  const history = useHistory();
+  const { isModelOpen, closeModel, userInfo } = useGlobalContext();
+
+  const redirectCallback = () => {
+    history.push("/quiz/start");
+  };
   return (
     <div className={`modal-container ${isModelOpen ? "isOpen" : ""} `}>
       <div className="modal-content">
@@ -16,7 +15,10 @@ const Modal = () => {
         {/*      <p>you answered {(correct / questions.length) * 100} % questions</p> */}
         <p>We have sent your result to your email</p>
         <p>{userInfo.email}</p>
-        <button className="close-btn" onClick={closeModel}>
+        <button
+          className="close-btn"
+          onClick={() => closeModel(redirectCallback)}
+        >
           Play again
         </button>
       </div>

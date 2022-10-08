@@ -1,48 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useGlobalContext } from "./context";
+import WelcomePage from "./pages/welcome";
+import StartQuizPage from "./pages/Start";
+import Quiz from "./pages/Quiz";
 
-import SetupForm from "./SetupForm";
-import Loading from "./Loading";
-import Questions from "./Questions";
-import Modal from "./Modal";
-
-import { IconToggler } from "./components/IconToggler";
 function App() {
-  const {
-    waiting,
-    loading,
-    questions,
-    index,
-    nextQuestion
-  } = useGlobalContext();
-
-  if (waiting) return <SetupForm />; // if true then you are waiting user info
-  if (loading) return <Loading />;
-
-  /*   const allAnswers = [...incorrect_answers, correct_answer]; */
-  /* const allAnswers = [...incorrect_answers]; */
-
-  const handleNext = () => {
-    nextQuestion();
-  };
   return (
-    <main>
-      {/*  {isModelOpen && <Modal />} */}
-      <Modal />
-      <section className="quiz">
-        <p className="quize-header ">
-          <span>
-            {" "}
-            Questions : {index + 1} / {questions.length}
-          </span>
-          <IconToggler />
-        </p>
-        <Questions />
-        <button className="next-question" onClick={handleNext}>
-          next question
-        </button>
-      </section>
-    </main>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/quiz/start">
+          <StartQuizPage />
+        </Route>
+        <Route path="/quiz/:quizId">
+          <WelcomePage />
+        </Route>
+        <Route path="/quiz">
+          <Quiz />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,83 @@
+{
+  "quiz": {
+    "_id": "633ff7479eca762f1de6a2d1",
+    "title": "Kids math quiz",
+    "subject": "math",
+    "description": "test your kids knowldge of math",
+    "bgUrl": "https://i.imgur.com/XBRPTK6.png",
+    "numberOfQuestions": 6,
+    "createdBy": "633dff12b524a48ec3acd5e0",
+    "createdAt": "2022-10-07T09:54:15.301Z",
+    "updatedAt": "2022-10-07T09:54:15.301Z",
+    "__v": 0,
+    "shortUrl": "https://bit.ly/3VbfSjR"
+  },
+  "questions": [
+    {
+      "_id": "633e0085b524a48ec3acd5f8",
+      "titleType": "text",
+      "titleTypeAssetUrl": "",
+      "AnswerType": "mcq",
+      "title": "5+3",
+      "quizId": "633ff7479eca762f1de6a2d1",
+      "wrongAnswers": ["53", "6", "53"],
+      "correctAnswer": "8",
+      "__v": 0
+    },
+    {
+      "_id": "633e00b4b524a48ec3acd5fc",
+      "titleType": "text",
+      "titleTypeAssetUrl": "",
+      "AnswerType": "mcq",
+      "title": "4*6",
+      "quizId": "633ff7479eca762f1de6a2d1",
+      "wrongAnswers": ["10", "2", "12"],
+      "correctAnswer": "24",
+      "__v": 0
+    },
+    {
+      "_id": "633e0128b524a48ec3acd600",
+      "titleType": "photo",
+      "titleTypeAssetUrl": "https://i.imgur.com/KssNxHy.jpg",
+      "AnswerType": "mcq",
+      "title": "solve the picture",
+      "quizId": "633ff7479eca762f1de6a2d1",
+      "wrongAnswers": ["9", "2", "6"],
+      "correctAnswer": "3",
+      "__v": 0
+    },
+    {
+      "_id": "633e016eb524a48ec3acd604",
+      "titleType": "audio",
+      "titleTypeAssetUrl": "https://i.imgur.com/nlsxIR4.mp4",
+      "AnswerType": "mcq",
+      "title": "listen and answer",
+      "quizId": "633ff7479eca762f1de6a2d1",
+      "wrongAnswers": ["57", "56", "36"],
+      "correctAnswer": "63",
+      "__v": 0
+    },
+    {
+      "_id": "633e024fb524a48ec3acd612",
+      "titleType": "video",
+      "titleTypeAssetUrl": "https://i.imgur.com/C9cFeOl.mp4",
+      "AnswerType": "mcq",
+      "title": "watch and answer",
+      "quizId": "633ff7479eca762f1de6a2d1",
+      "wrongAnswers": ["29", "20", "44"],
+      "correctAnswer": "40",
+      "__v": 0
+    },
+    {
+      "_id": "633e0285b524a48ec3acd616",
+      "titleType": "text",
+      "titleTypeAssetUrl": "",
+      "AnswerType": "mcq",
+      "title": "3*4*5",
+      "quizId": "633ff7479eca762f1de6a2d1",
+      "wrongAnswers": ["13", "27", "22"],
+      "correctAnswer": "60",
+      "__v": 0
+    }
+  ]
+}

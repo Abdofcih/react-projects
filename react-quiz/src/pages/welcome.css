@@ -1,0 +1,19 @@
+.welcome {
+  width: 80%;
+  max-width: 500px;
+  background-color: var(--clr-white);
+  margin: 25px auto;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.image-container,
+img {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+.welcome h3,
+.welcome .ready-btn {
+  margin-top: 5px;
+}

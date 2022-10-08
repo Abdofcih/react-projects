@@ -1,23 +1,28 @@
 import React from "react";
-import { useGlobalContext } from "./context";
-import { IconToggler } from "./components/IconToggler";
+import { Link, useHistory } from "react-router-dom";
+
+import { useGlobalContext } from "../context";
+import IconToggler from "./IconToggler";
 const SetupForm = () => {
+  const history = useHistory();
   const {
     userInfo,
     handleInputChange,
     handleFormSubmit,
     error
   } = useGlobalContext();
+
+  const redirectCallback = () => {
+    history.push("/quiz");
+  };
   return (
     <main>
       <section className="quiz quiz-small">
         <p className="text-align-right">
           <IconToggler />
         </p>
-        <p className="setup-form-title">
-          Learning First <span>(Eng. Mohamed waheed)</span>
-        </p>
-        <form className="setup-form" onSubmit={handleFormSubmit}>
+        <p className="setup-form-title">Learning First Academy</p>
+        <form className="setup-form">
           <div className="form-control">
             <label htmlFor="name">Full Name</label>
             <input
@@ -42,9 +47,13 @@ const SetupForm = () => {
             />
           </div>
           {error && <p className="error">Can't get and display questions</p>}
-          <button type="submit" className="submit-btn">
+          <Link
+            onClick={e => handleFormSubmit(e, redirectCallback)}
+            to="/start-quiz/123quizId"
+            className="submit-btn"
+          >
             Start
-          </button>
+          </Link>
         </form>
       </section>
     </main>
